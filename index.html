@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>cssanim</title>
+ </head>
+ <body id="body1">
+  <img src="background.png"></div>
+  <img id="cat" src="catforanim.png" />
+  <div id="fishing-rod"></div>
+  <div class="line" id="line"></div>
+  <h1 id="score" class="centr">0</h1>
+  <style>/* The animation code */
+    @keyframes example1 {
+        0%   {bottom:20px;}
+        50% {bottom:-20px;}
+        100% {bottom:20px;}
+    }
+
+    /* The element to apply the animation to */
+    .exampleanim{
+        animation: example 4s forwards;
+    }
+    .exampleanim1{
+        animation: example1 2s forwards;
+    }
+    .centr{
+        position: absolute;
+        top: 160px;
+        left: 250px;
+
+    }
+
+    #fishing-rod {
+        position: absolute;
+        bottom: -10px;
+        left: 170px;
+        width: 3px;
+        height: 100px;
+        background-color: #8b4513;
+        transform: rotate(30deg);
+        z-index: 2;
+    }
+
+    .line {
+        position: absolute;
+        bottom: 20px;
+        left: 197px;
+        transform: translateX(-50%);
+        width: 2px;
+        top: 380px;
+        background-color: #000;
+    }
+    #cat{
+        width: 400px;
+        position:absolute;
+        left:-60px;
+        right:100px;
+        bottom: -200px;
+    }
+    </style>
+    <script>
+        let line = document.querySelector('.line');
+        let btnstop = document.getElementById('paus');
+        let h1 = document.getElementById('score');
+
+        console.log(parseInt(h1.innerText)+1)
+
+        function randomInteger(min, max) {
+            // случайное число от min до (max+1)
+            let rand = min + Math.random() * (max + 1 - min);
+            rand = Math.floor(rand);
+            console.log(rand);
+            return rand;
+        }
+
+        let bodyk = document.getElementById('body1');
+        document.addEventListener("click", function() {
+            line.classList.add('exampleanim1');
+            randomInteger(1,5);
+        });
+
+        // Отслеживаем окончание анимации
+        line.addEventListener("animationend", AnimationHandler1, false);
+        function AnimationHandler () {
+            // Удаляем класс с анимацией
+            box.classList.remove('exampleanim');
+        }
+        function AnimationHandler1 () {
+            // Удаляем класс с анимацией
+            line.classList.remove('exampleanim1');
+            randomint = randomInteger(10,50);
+            h1.innerText = parseInt(h1.innerText)+randomint;
+        }
+    </script>
+ </body>
+</html>
