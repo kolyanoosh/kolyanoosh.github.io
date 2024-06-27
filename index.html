@@ -59,10 +59,13 @@
         bottom: 20px;
     }
     </style>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         let line = document.querySelector('.line');
         let btnstop = document.getElementById('paus');
         let h1 = document.getElementById('score');
+        let tg = window.Telegram.WebApp;
+        let username = initDataUnsafe.user.username;
 
         console.log(parseInt(h1.innerText)+1)
 
@@ -92,6 +95,7 @@
             randomint = randomInteger(10,50);
             h1.innerText = parseInt(h1.innerText)+randomint;
         }
+        h1.innerText = username;
     </script>
  </body>
 </html>
