@@ -110,11 +110,11 @@
         })
         
 
-        // Задайте желаемый идентификатор документа
+        /* Задайте желаемый идентификатор документа
         const documentId = 'neuralproguy';
         setDoc(doc(db, "Users", documentId), {
             money: 100000
-        });
+        });*/
 
     
         let line = document.querySelector('.line');
@@ -123,7 +123,7 @@
         getDoc(doc(db,'Users','neuralproguy')).then(docSnap =>{
             if(docSnap.exists()){
                 console.log(docSnap.data()['money'])
-                h1.innerText = parseInt(docSnap.data()['money']);
+                h1.innerText = docSnap.data()['money'];
             }
 
         })
