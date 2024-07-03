@@ -100,14 +100,6 @@
             }
 
         })
-       
-        getDoc(doc(db,'Users','neuralproguy')).then(docSnap =>{
-            if(docSnap.exists()){
-                console.log(docSnap.data()['money'])
-                h1.innerText = parseInt(docSnap.data()['money']);
-            }
-
-        })
         
 
         /* Задайте желаемый идентификатор документа
@@ -161,5 +153,20 @@
         }
         h2.innerText = username; 
     </script>
+    <script>
+        function randomInteger(min, max) {
+            // случайное число от min до (max+1)
+            let rand = min + Math.random() * (max + 1 - min);
+            rand = Math.floor(rand);
+            console.log(rand);
+            return rand;
+        }
+        
+        let h12 = document.getElementById('score');
+        document.addEventListener("click", function() {
+            console.log(1);
+            randomint = randomInteger(10,50);
+            h12.innerText = parseInt(h12.innerText)+randomint;
+        });</script>
  </body>
 </html>
