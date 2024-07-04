@@ -156,7 +156,7 @@
             randomint = randomInteger(10,50);
             h1.innerText = parseInt(h1.innerText)+randomint;
             setDoc(doc(db, "Users", documentId), {
-                money: h1.innerText
+                money: parseInt(h1.innerText)
             });
         }
         h2.innerText = username; 
