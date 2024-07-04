@@ -155,7 +155,7 @@
             line.classList.remove('exampleanim1');
             randomint = randomInteger(10,50);
             h1.innerText = parseInt(h1.innerText)+randomint;
-            setDoc(doc(db, "Users", documentId), {
+            setDoc(doc(db, "Users", username), {
                 money: parseInt(h1.innerText)
             });
         }
