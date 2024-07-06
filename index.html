@@ -8,7 +8,7 @@
  <body id="body1">
   <img src="background.png"></div>
   <img id="cat" src="catforanim.png" />
-  <img id="coin" src="coin.png" />
+  <img id="coin" class="coin" src="coin.png" />
   <div id="fishing-rod"></div>
   <div class="line" id="line"></div>
   <h1 id="score" class="centr">0</h1>
@@ -36,6 +36,9 @@
     .exampleanim1{
         animation: example1 2s forwards;
     }
+    .animforcoin1{
+        animation: animforcoin 2s forwards;
+    }
     .centr{
         position: absolute;
         top: 160px;
@@ -43,7 +46,7 @@
 
     }
 
-    #coin{
+    .coin{
        position: absolute;
        left: 195px;
        bottom: 100px;
@@ -129,6 +132,7 @@
         let line = document.querySelector('.line');
         let btnstop = document.getElementById('paus');
         let h1 = document.getElementById('score');
+        let coin = document.querySelector('.coin');
         getDoc(doc(db,'Users',username)).then(docSnap =>{
             if(docSnap.exists()){
                 console.log(docSnap.data()['money'])
@@ -151,6 +155,7 @@
         let bodyk = document.getElementById('body1');
         document.addEventListener("click", function() {
             line.classList.add('exampleanim1');
+            coin.classList.add("animforcoin1")
             randomInteger(1,5);
         });
 
@@ -163,6 +168,7 @@
         function AnimationHandler1 () {
             // Удаляем класс с анимацией
             line.classList.remove('exampleanim1');
+            coin.classList.remove('animforcoin1');
             randomint = randomInteger(10,50);
             h1.innerText = parseInt(h1.innerText)+randomint;
             setDoc(doc(db, "Users", username), {
