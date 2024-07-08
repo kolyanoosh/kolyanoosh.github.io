@@ -6,6 +6,13 @@
   <title>cssanim</title>
  </head>
  <body id="body1">
+  <nav>
+      <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="market.html">Skins</a></li>
+          <li><a href="#contact">Contact</a></li>
+      </ul>
+  </nav>
   <img src="background.png"></div>
   <img id="cat" src="catforanim.png" />
   <img id="coin" class="coin" src="coin.png" />
@@ -81,6 +88,39 @@
         right:100px;
         bottom: -8px;
     }
+    nav {
+            position: fixed;
+            bottom: 1480px;
+            width: 400px;
+            background-color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            text-align: center;
+        }
+
+        li {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
     </style>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script type="module">
