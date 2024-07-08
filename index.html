@@ -194,12 +194,10 @@
         }
 
         let bodyk = document.getElementById('body1');
-        document.addEventListener("click", function(e) {
-            if (e.target.id != 'ul') {
-               line.classList.add('exampleanim1');
-               coin.classList.add("animforcoin1")
-               randomInteger(1,5);
-            }
+        document.addEventListener("click", function() {
+            line.classList.add('exampleanim1');
+            coin.classList.add("animforcoin1")
+            randomInteger(1,5);
         });
 
         // Отслеживаем окончание анимации
@@ -230,12 +228,10 @@
         }
         
         let h12 = document.getElementById('score');
-        document.addEventListener("click", function(e) {
-           if (e.target.id != 'ul') {
-              console.log(1);
-              randomint = randomInteger(10,50);
-              h12.innerText = parseInt(h12.innerText)+randomint;
-           }
+        document.addEventListener("click", function() {
+           console.log(1);
+           randomint = randomInteger(10,50);
+           h12.innerText = parseInt(h12.innerText)+randomint;
         });</script>
  </body>
 </html>
