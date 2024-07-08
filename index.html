@@ -194,7 +194,7 @@
         }
 
         let bodyk = document.getElementById('body1');
-        document.addEventListener("click", function() {
+        document.addEventListener("click", function(e) {
             if (e.target.id != 'ul') {
                line.classList.add('exampleanim1');
                coin.classList.add("animforcoin1")
@@ -230,7 +230,7 @@
         }
         
         let h12 = document.getElementById('score');
-        document.addEventListener("click", function() {
+        document.addEventListener("click", function(e) {
            if (e.target.id != 'ul') {
               console.log(1);
               randomint = randomInteger(10,50);
