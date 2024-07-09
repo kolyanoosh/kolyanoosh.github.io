@@ -6,22 +6,22 @@
   <title>cssanim</title>
  </head>
  <body id="body1">
-  <nav>
-      <ul id="ul">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="market.html">Skins</a></li>
-          <li><a href="#contact">Contact</a></li>
-      </ul>
-  </nav>
-  <img src="background.png"></div>
+  <button id="button1" class="btn123" onclick="window.location.href = 'index.html'">Home</button>
+  <button id="button2" class="btn123" onclick="window.location.href = 'market.html'">Skins</button>
+  <button id="button3" class="btn123" onclick="window.location.href = 'index.html'">Contact</button>
+  <img id="imgmain" src="background.png"></div>
   <img id="cat" src="catforanim.png" />
   <img id="coin" class="coin" src="coin.png" />
+  <div id="backgr"></div>
   <div id="fishing-rod"></div>
   <div class="line" id="line"></div>
   <h1 id="score" class="centr">0</h1>
   <h2 id="name" style="position:absolute;left:10;top:0;margin-bottom:0">1</h2>
   
   <style>/* The animation code */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;700&display=swap');
     @keyframes example1 {
         0%   {bottom:215px;}
         50% {bottom:175px;}
@@ -52,7 +52,9 @@
         left: 250px;
 
     }
-
+    #imgmain{
+        z-index: -2;
+    }
     .coin{
        position: absolute;
        left: 150px;
@@ -87,39 +89,52 @@
         right:100px;
         bottom: -8px;
     }
-    nav {
-            position: fixed;
-            bottom: 1610px;
-            width: 400px;
+    #backgr{
+        position: absolute;
+        bottom: 30px;
+        width: 365px;
+        height: 60px;
+        border-radius: 15px;
+        z-index: 0;
+        background-color: #5a5858;
+    }
+    
+    #button1 {
+            position: absolute;
+            bottom: 50px;
+            width: 100px;
+            left: 10px;
+            border-radius: 15px;
+            z-index: 1;
             background-color: #333;
+            color: aliceblue;
+            font-family: 'Exo', sans-serif;
         }
-
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #333;
-            text-align: center;
-        }
-
-        li {
-            display: inline-block;
-            margin-right: 5px;
-        }
-
-        li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        li a:hover {
-            background-color: #555;
-            border-radius: 5px;
-        }
+    #button2 {
+        position: absolute;
+        bottom: 50px;
+        width: 100px;
+        left: 130px;
+        border-radius: 15px;
+        z-index: 1;
+        background-color: #333;
+        color: aliceblue;
+        font-family: 'Exo', sans-serif;
+    }
+    #button3 {
+        position: absolute;
+        bottom: 50px;
+        width: 100px;
+        left: 250px;
+        border-radius: 15px;
+        z-index: 1;
+        background-color: #333;
+        color: aliceblue;
+        font-family: 'Exo', sans-serif;
+    }
+    #button1:active { background: rgba(255,255,255,.2); }
+    #button2:active { background: rgba(255,255,255,.2); }
+    #button3:active { background: rgba(255,255,255,.2); }
     </style>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script type="module">
@@ -229,9 +244,9 @@
         
         let h12 = document.getElementById('score');
         document.addEventListener("click", function() {
-           console.log(1);
-           randomint = randomInteger(10,50);
-           h12.innerText = parseInt(h12.innerText)+randomint;
+            console.log(1);
+            randomint = randomInteger(10,50);
+            h12.innerText = parseInt(h12.innerText)+randomint;
         });</script>
  </body>
 </html>
