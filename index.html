@@ -175,9 +175,14 @@
                 console.log(docSnap.data()['money'])
             }
             else{
-                setDoc(doc(db, "Users", username), {
-                    money: 0
-                });
+                if(docSnap.exists()){
+                    console.log(docSnap.data()['money'])
+                }
+                else{
+                    setDoc(doc(db, "Users", username), {
+                        money: 0
+                    });
+                }
             }
 
         })
