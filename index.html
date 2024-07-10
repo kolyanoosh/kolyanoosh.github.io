@@ -6,9 +6,9 @@
   <title>cssanim</title>
  </head>
  <body id="body1">
-  <button id="button1" class="btn123" onclick="window.location.href = 'index.html'">Игра</button>
-  <button id="button2" class="btn123" onclick="window.location.href = 'market.html'">Скины</button>
-  <button id="button3" class="btn123" onclick="window.location.href = 'tasks.html'">Задания</button>
+  <button id="button1" class="btn123" onclick="window.location.href = 'index.html'">Home</button>
+  <button id="button2" class="btn123" onclick="window.location.href = 'market.html'">Skins</button>
+  <button id="button3" class="btn123" onclick="window.location.href = 'index.html'">Contact</button>
   <img id="imgmain" src="background.png"></div>
   <img id="cat" src="catforanim.png" />
   <img id="coin" class="coin" src="coin.png" />
@@ -23,16 +23,16 @@
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;700&display=swap');
     @keyframes example1 {
-        0%   {bottom:32.57%;}
-        50% {bottom:26.5151515152%;}
-        100% {bottom:32.57%;}
+        0%   {bottom:215px;}
+        50% {bottom:175px;}
+        100% {bottom:215px;}
     }
     @keyframes animforcoin {
-        0% {bottom: 15.15%;
+        0% {bottom: 100px;
             visibility: hidden;}
-        50% {bottom: 15.15%;
+        50% {bottom: 100px;
             visibility: hidden;}
-        100% {bottom: 22.72%;
+        100% {bottom: 150px;
             visibility: visible;}
     }
 
@@ -47,49 +47,54 @@
         animation: animforcoin 2s forwards;
     }
     .centr{
-        position: fixed;
-        top: 24.24%;
-        left: 65.79%;
+        position: absolute;
+        top: 160px;
+        left: 250px;
 
     }
     #imgmain{
         z-index: -2;
     }
     .coin{
-       position: fixed;
-       left: 39.5%;
-       bottom: 15.15%;
+       position: absolute;
+       left: 150px;
+       bottom: 100px;
        visibility: hidden;
        z-index: 99999999;
     }
     #fishing-rod {
-        position: fixed;
-        bottom: 26.06%;
-        left: 44.73%;
+        position: absolute;
+        bottom: 172px;
+        left: 170px;
         width: 3px;
         height: 100px;
         background-color: #8b4513;
         transform: rotate(30deg);
         z-index: 2;
     }
-
+    #frame{
+        position: absolute;
+        left: 165px;
+        bottom: 502px;
+    }
     .line {
-        position: fixed;
-        bottom: 32.57%;
-        left: 51.85%;
+        position: absolute;
+        bottom: 215px;
+        left: 197px;
         transform: translateX(-50%);
         width: 2px;
-        top: 60.6%;
+        top: 400px;
         background-color: #000;
     }
     #cat{
         width: 400px;
-        position:fixed;
-        left:5.8%;
-        bottom: 50%;
+        position:absolute;
+        left:-60px;
+        right:100px;
+        bottom: -8px;
     }
     #backgr{
-        position: fixed;
+        position: absolute;
         bottom: 30px;
         width: 365px;
         height: 60px;
@@ -99,7 +104,7 @@
     }
     
     #button1 {
-            position: fixed;
+            position: absolute;
             bottom: 50px;
             width: 100px;
             left: 10px;
@@ -110,7 +115,7 @@
             font-family: 'Exo', sans-serif;
         }
     #button2 {
-        position: fixed;
+        position: absolute;
         bottom: 50px;
         width: 100px;
         left: 130px;
@@ -121,7 +126,7 @@
         font-family: 'Exo', sans-serif;
     }
     #button3 {
-        position: fixed;
+        position: absolute;
         bottom: 50px;
         width: 100px;
         left: 250px;
