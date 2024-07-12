@@ -5,7 +5,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>tasks</title>
     </head>
-    <body>
-        
+    <body style="background-color: #63abea;">
+        <button id="btn" class="taskclass">Пригласи друга+10000</button>
+        <style>
+            .taskclass{
+               background-color: #539edf;  
+            }
+            #btn{
+                position: relative;
+                top: 0px;
+                left: 20px;
+                height: 60px;
+                width: 300px;
+                background-image: url('coin.png');
+                background-size: auto 100%;
+                background-position: 50px 0;
+                background-repeat:no-repeat;
+                border-radius: 30px;
+                font-weight: 700;
+                font-size: 1.3rem;
+            }
+        </style>
+        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+        <script>
+            btn = document.getElementById('btn');
+            btn.addEventListener("click", function() {
+                let tg = window.Telegram.WebApp;
+                url = "https://t.me/share/url?url=https://t.me/cryptofishcatch_bot";
+                openTelegramLink(url);
+            });
+        </script>
     </body>
 </html>
