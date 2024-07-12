@@ -27,12 +27,46 @@
             }
         </style>
         <script src="https://telegram.org/js/telegram-web-app.js"></script>
-        <script>
+        <script type="module">
             btn = document.getElementById('btn');
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+            import { getFirestore,getDoc,getDocs, doc, collection, addDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+      
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyA3DHLEIODQIz1bVJeJQjBPzt2ws9AjeR0",
+              authDomain: "cryptofish-2e064.firebaseapp.com",
+              projectId: "cryptofish-2e064",
+              storageBucket: "cryptofish-2e064.appspot.com",
+              messagingSenderId: "17827617649",
+              appId: "1:17827617649:web:033599b13d0de7e95634d0",
+              measurementId: "G-47WE3X1NEG"
+            };
+      
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            console.log(app);
+
+            const db = getFirestore();
             btn.addEventListener("click", function() {
                 let tg = window.Telegram.WebApp;
-                url = "https://t.me/share/url?url=https://t.me/cryptofishcatch_bot";
-                openTelegramLink(url);
+                let username = tg.initDataUnsafe.user.username;
+                getDoc(doc(db,'Users',username)).then(docSnap =>{
+                    if(docSnap.exists()){
+                        console.log(docSnap.data()['money'])
+                        setDoc(doc(db, "Users", username), {
+                            money: docSnap.data()['money']+10000
+                        });
+                    }
+                    else(){
+                        console.log();
+                    }
+                })
             });
         </script>
     </body>
