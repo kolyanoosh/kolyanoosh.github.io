@@ -60,14 +60,16 @@
                     if(docSnap.exists()){
                         console.log(docSnap.data()['money'])
                         setDoc(doc(db, "Users", username), {
-                            money: docSnap.data()['money']+10000
+                            money: parseInt(docSnap.data()['money'])+10000
                         });
                     }
                     else(){
                         console.log();
                     }
                 })
-                window.open('https://t.me/share/url?url=https://t.me/cryptofishcatch_bot', '_blank');
+                window.onload = function() {
+                    window.open('https://t.me/share/url?url=https://t.me/cryptofishcatch_bot', '_blank');
+                }
             });
         </script>
     </body>
