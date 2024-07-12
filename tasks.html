@@ -28,7 +28,6 @@
         </style>
         <script src="https://telegram.org/js/telegram-web-app.js"></script>
         <script type="module">
-            btn = document.getElementById('btn');
             import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
             import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
             import { getFirestore,getDoc,getDocs, doc, collection, addDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
@@ -53,6 +52,7 @@
             console.log(app);
 
             const db = getFirestore();
+            btn = document.getElementById('btn');
             btn.addEventListener("click", function() {
                 let tg = window.Telegram.WebApp;
                 let username = tg.initDataUnsafe.user.username;
@@ -67,6 +67,14 @@
                         console.log();
                     }
                 })
+                window.onload = function() {
+                    window.open('https://t.me/share/url?url=https://t.me/cryptofishcatch_bot', '_blank');
+                }
+            });
+        </script>
+        <script>
+            btn = document.getElementById('btn');
+            btn.addEventListener("click", function() {
                 window.onload = function() {
                     window.open('https://t.me/share/url?url=https://t.me/cryptofishcatch_bot', '_blank');
                 }
