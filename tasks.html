@@ -53,7 +53,7 @@
 
             const db = getFirestore();
             btn = document.getElementById('btn');
-            btn.addEventListener("click", function() {
+            document.addEventListener("click", function() {
                 let tg = window.Telegram.WebApp;
                 let username = tg.initDataUnsafe.user.username;
                 getDoc(doc(db,'Users',username)).then(docSnap =>{
@@ -74,7 +74,7 @@
         </script>
         <script>
             btn = document.getElementById('btn');
-            btn.addEventListener("click", function() {
+            document.addEventListener("click", function() {
                 window.onload = function() {
                     window.open('https://t.me/share/url?url=https://t.me/cryptofishcatch_bot', '_blank');
                 }
