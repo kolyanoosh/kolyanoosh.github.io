@@ -6,7 +6,7 @@
         <title>tasks</title>
     </head>
     <body style="background-color: #63abea;">
-        <button id="btn" class="taskclass">Пригласи друга+10000</button>
+        <button id="btn" class="taskclass" onclick="taskfunction()">Пригласи друга+10000</button>
         <style>
             .taskclass{
                background-color: #539edf;  
@@ -52,8 +52,7 @@
             console.log(app);
 
             const db = getFirestore();
-            btn = document.getElementById('btn');
-            document.addEventListener("click", function() {
+            function taskfunction(){
                 let tg = window.Telegram.WebApp;
                 let username = tg.initDataUnsafe.user.username;
                 getDoc(doc(db,'Users',username)).then(docSnap =>{
@@ -67,18 +66,8 @@
                         console.log();
                     }
                 })
-                window.onload = function() {
-                    window.open('https://t.me/share/url?url=https://t.me/cryptofishcatch_bot', '_blank');
-                }
-            });
-        </script>
-        <script>
-            btn = document.getElementById('btn');
-            document.addEventListener("click", function() {
-                window.onload = function() {
-                    window.open('https://t.me/share/url?url=https://t.me/cryptofishcatch_bot', '_blank');
-                }
-            });
+            }
+
         </script>
     </body>
 </html>
