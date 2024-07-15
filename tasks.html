@@ -59,7 +59,7 @@
                     if(docSnap.exists()){
                         console.log(docSnap.data()['money'])
                         setDoc(doc(db, "Users", username), {
-                            money: parseInt(docSnap.data()['money'])+10000
+                            money: parseInt(docSnap.data()['money'])+10
                         });
                     }
                 })
