@@ -6,11 +6,11 @@
   <title>cssanim</title>
  </head>
  <body id="body1">
-  <button id="button1" class="btn123" onclick="window.location.href = 'index.html'">Home</button>
+  <button id="button1" class="btn123" onclick="window.location.href = 'index.html'">Home1</button>
   <button id="button2" class="btn123" onclick="window.location.href = 'market.html'">Skins</button>
-  <button id="button3" class="btn123" onclick="window.location.href = 'https://kolyanoosh.github.io/tasks.html'">Tasks</button>
+  <button id="button3" class="btn123" onclick="window.location.href = 'tasks.html'">Tasks</button>
   <img id="imgmain" src="background.png"></div>
-  <img id="cat" src="catforanim.png" />
+  <img id="cat" src="https://i.postimg.cc/mr4xCRq2/catforanim.png" />
   <img id="coin" class="coin" src="coin.png" />
   <div id="backgr"></div>
   <div id="fishing-rod"></div>
@@ -169,14 +169,20 @@
         const db = getFirestore();
         let tg = window.Telegram.WebApp;
         let username = tg.initDataUnsafe.user.username;
-
+        
         getDoc(doc(db,'Users',username)).then(docSnap =>{
             if(docSnap.exists()){
                 console.log(docSnap.data()['money'])
+                getDoc(doc(db,'skins',docSnap.data()['skinnow'])).then(docSnap001 =>{
+                    document.getElementById("cat").src = docSnap001.data().url;
+                })
             }
             else{
                 if(docSnap.exists()){
                     console.log(docSnap.data()['money'])
+                    getDoc(doc(db,'skins',docSnap.data()['skinnow'])).then(docSnap001 =>{
+                        document.getElementById("cat").src = docSnap001.data().url;
+                    })
                 }
                 else{
                     setDoc(doc(db, "Users", username), {
