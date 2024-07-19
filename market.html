@@ -5,7 +5,120 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>cssanim</title>
     </head>
-    <body>
-        
+    <body style="background-color: #63abea;">
+        <div id="mdiv" class="flex-container"></div>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+            .flex-container{
+                display: grid;
+                grid-gap: 10px;
+            }
+        </style>
+        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+            import { getFirestore,getDoc,getDocs, doc, collection, addDoc, setDoc, where } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyA3DHLEIODQIz1bVJeJQjBPzt2ws9AjeR0",
+                authDomain: "cryptofish-2e064.firebaseapp.com",
+                projectId: "cryptofish-2e064",
+                storageBucket: "cryptofish-2e064.appspot.com",
+                messagingSenderId: "17827617649",
+                appId: "1:17827617649:web:033599b13d0de7e95634d0",
+                measurementId: "G-47WE3X1NEG"
+            };
+      
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            console.log(app);
+
+            let tg = window.Telegram.WebApp;
+            let username = tg.initDataUnsafe.user.username;
+
+            const db = getFirestore();
+            async function getAllDocumentsFromCollection() {
+                const querySnapshot = await getDocs(collection(db, "skins"));
+  
+                // Пройдитесь по каждому документу и получите его данные
+                querySnapshot.forEach((doc1) => {
+                    console.log(doc1.id, "=>", doc1.data().url);
+                        var div = document.createElement("div");
+                        div.setAttribute("id",doc1.id)
+                        div.setAttribute("onclick","buyfunction(this.id)");
+                        div.style.position = "relative";
+                        div.style.border = "2px solid black";
+                        div.style.borderRadius = "15px";
+                        div.style.marginLeft = "35px";
+                        div.style.width = "200px";
+                        div.style.height = "200px";
+                        div.style.display = "flex";
+                        div.style.justifyContent = "center";
+                        div.style.alignItems = "center";
+                        div.style.backgroundColor = "#ffffff";
+
+                        function buyfunction(clickid){
+                            getDoc(doc(db,'Users',username)).then(docSnap =>{
+                                console.log(docSnap.data()['skinshave'][0]);
+                                var arr = docSnap.data()['skinshave'];
+                                console.log(clickid);
+                                if (arr.indexOf(clickid) == -1){
+                                    getDoc(doc(db,'skins',clickid)).then(docSnap01 =>{
+                                        console.log(docSnap01.data())
+                                        if(docSnap.data()['money'] > docSnap01.data()['price']){
+                                            arr.push(clickid);
+                                            setDoc(doc(db, "Users", username), {
+                                                skinshave: arr,
+                                                money : docSnap.data()['money']-docSnap01.data()['price'],
+                                                skinnow : docSnap.data()['skinnow']
+                                            });
+                                        }
+                                    })
+                                }
+                                else{
+                                    setDoc(doc(db, "Users", username), {
+                                        skinshave: docSnap.data()['skinshave'],
+                                        money : docSnap.data()['money'],
+                                        skinnow : clickid
+                                    });
+                                }
+                            })
+                        }
+                        window.buyfunction = buyfunction;
+
+
+                        document.getElementById("mdiv").appendChild(div);
+                        var img = document.createElement("img");
+                        img.setAttribute("src",doc1.data().url);
+                        img.style.display = "block";
+                        img.style.width = "200%";
+                        img.style.height = "200%";
+                        img.style.objectFit = "cover";
+
+                        var caption = document.createElement("figcaption");
+                        caption.setAttribute("id","capt");
+                        caption.style.position = "absolute";
+                        caption.style.fontFamily = "Bebas Neue";
+                        caption.style.top = "170px";
+                        caption.textContent = doc1.data().name;
+
+                        var caption1 = document.createElement("figcaption");
+                        caption1.setAttribute("id","capt1");
+                        caption1.style.position = "absolute";
+                        caption1.style.fontFamily = "Iceland";
+                        caption1.style.top = "185px";
+                        caption1.textContent = doc1.data().price;
+
+                        div.appendChild(img);  
+                        div.appendChild(caption1)
+                        div.appendChild(caption);
+                });
+            }
+
+            getAllDocumentsFromCollection();
+        </script>
     </body>
 </html>
