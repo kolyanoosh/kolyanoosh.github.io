@@ -188,7 +188,7 @@
                 }
                 else{
                     setDoc(doc(db, "Users", username), {
-                        money: 0,
+                        money: 0
                     });
                 }
             }
@@ -246,7 +246,7 @@
             randomint = randomInteger(10,50);
             h1.innerText = parseInt(h1.innerText)+randomint;
             setDoc(doc(db, "Users", username), {
-               money: parseInt(h1.innerText),
+               money: parseInt(h1.innerText)
             });
     </script>
     <script>
