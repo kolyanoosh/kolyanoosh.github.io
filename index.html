@@ -146,7 +146,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-        import { getFirestore,getDoc,getDocs, doc, collection, addDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getFirestore,getDoc,getDocs, doc, collection, addDoc, setDoc, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
       
@@ -168,9 +168,12 @@
         console.log(app);
 
         const db = getFirestore();
-        setDoc(doc(db, "Chatid", parseInt(1123)), {
-           username: "us"
-        });
+        const collectionRef = db.collection('Chatid');
+
+        // Указываем свой ID и добавляем документ без данных
+        const docId = "example"
+        collectionRef.doc(docId).set({})
+     
         let tg = window.Telegram.WebApp;
         let username = tg.initDataUnsafe.user.username;
         let chatid = tg.initDataUnsafe.user.id;
