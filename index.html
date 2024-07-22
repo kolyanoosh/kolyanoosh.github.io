@@ -6,7 +6,7 @@
   <title>cssanim</title>
  </head>
  <body id="body1">
-  <button id="button1" class="btn123" onclick="window.location.href = 'index.html'">Home2</button>
+  <button id="button1" class="btn123" onclick="window.location.href = 'index.html'">Home</button>
   <button id="button2" class="btn123" onclick="window.location.href = 'market.html'">Skins</button>
   <button id="button3" class="btn123" onclick="window.location.href = 'tasks.html'">Tasks</button>
   <img id="imgmain" src="background.png"></div>
@@ -17,6 +17,7 @@
   <div class="line" id="line"></div>
   <h1 id="score" class="centr">0</h1>
   <h2 id="name" style="position:absolute;left:10;top:0;margin-bottom:0">1</h2>
+  <button onclick="asmrbutton()">Turn on/off ASMR</button>
   
   <style>/* The animation code */
     /* The animation code */
@@ -169,8 +170,6 @@
         const db = getFirestore();
         let tg = window.Telegram.WebApp;
         let username = tg.initDataUnsafe.user.username;
-        let h2 = document.getElementById('name');
-        h2.innerText = username; 
         
         getDoc(doc(db,'Users',username)).then(docSnap =>{
             if(docSnap.exists()){
@@ -214,7 +213,7 @@
             }
 
         })
-        
+        let h2 = document.getElementById('name');
 
         console.log(parseInt(h1.innerText)+1)
 
@@ -246,8 +245,10 @@
             randomint = randomInteger(10,50);
             h1.innerText = parseInt(h1.innerText)+randomint;
             setDoc(doc(db, "Users", username), {
-               money: parseInt(h1.innerText)
+                money: parseInt(h1.innerText)
             });
+        }
+        h2.innerText = username; 
     </script>
     <script>
         function randomInteger(min, max) {
@@ -263,6 +264,30 @@
             console.log(1);
             randomint = randomInteger(10,50);
             h12.innerText = parseInt(h12.innerText)+randomint;
-        });</script>
+        });
+        function asmrbutton(){
+            const element = document.getElementById('asmr');
+            if(element){
+                document.getElementById("asmr").remove();
+                console.log("yes!");
+            }
+            else{
+                var iframe = document.createElement("iframe");
+                
+                iframe.setAttribute("id","asmr");
+                iframe.setAttribute("width","210");
+                iframe.setAttribute("height","157");
+                iframe.setAttribute("src","https://www.youtube.com/embed/uCNiCPDlvkI");
+
+                iframe.style.position = "relative";
+                iframe.style.left = "208px";
+                iframe.style.bottom = "1332px";
+
+                document.body.appendChild(iframe);
+
+            }
+        }
+        window.asmrbutton = asmrbutton;
+    </script>
  </body>
 </html>
