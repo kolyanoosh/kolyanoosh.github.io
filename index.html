@@ -246,13 +246,10 @@
             coin.classList.remove('animforcoin1');
             randomint = randomInteger(10,50);
             h1.innerText = parseInt(h1.innerText)+randomint;
-            setDoc(doc(db, "Users", username), {
-                money: parseInt(h1.innerText)
-            });
             getDoc(doc(db,'Users',username)).then(docSnap01 =>{
                 setDoc(doc(db, "Users", username), {
-                   skinshave: docSnap01.data()['skinshave'],
                    money : parseInt(h1.innerText),
+                   skinshave: docSnap01.data()['skinshave'],
                    skinnow : docSnap01.data()['skinnow']
                  });
             })
