@@ -186,7 +186,9 @@
                 }
                 else{
                     setDoc(doc(db, "Users", username), {
-                        money: 0
+                        money: 0,
+                        skinnow: "cat",
+                        skinshave: ["cat"]
                     });
                 }
             }
@@ -243,10 +245,13 @@
             coin.classList.remove('animforcoin1');
             randomint = randomInteger(10,50);
             h1.innerText = parseInt(h1.innerText)+randomint;
-            setDoc(doc(db, "Users", username), {
-                money: parseInt(h1.innerText)
-            });
-        }
+            getDoc(doc(db,'Users',username)).then(docSnap =>{
+               setDoc(doc(db, "Users", username), {
+                  money: parseInt(h1.innerText),
+                  skinnow: docSnap.data()['skinnow'],
+                  skinshave: docSnap.data['skinshave']
+               });
+            })
         h2.innerText = username; 
     </script>
     <script>
