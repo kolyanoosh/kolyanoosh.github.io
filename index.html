@@ -169,6 +169,8 @@
         const db = getFirestore();
         let tg = window.Telegram.WebApp;
         let username = tg.initDataUnsafe.user.username;
+        let h2 = document.getElementById('name');
+        h2.innerText = username; 
         
         getDoc(doc(db,'Users',username)).then(docSnap =>{
             if(docSnap.exists()){
@@ -212,7 +214,7 @@
             }
 
         })
-        let h2 = document.getElementById('name');
+        
 
         console.log(parseInt(h1.innerText)+1)
 
@@ -246,7 +248,6 @@
             setDoc(doc(db, "Users", username), {
                money: parseInt(h1.innerText),
             });
-        h2.innerText = username; 
     </script>
     <script>
         function randomInteger(min, max) {
