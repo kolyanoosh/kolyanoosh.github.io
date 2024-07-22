@@ -247,6 +247,13 @@
             setDoc(doc(db, "Users", username), {
                 money: parseInt(h1.innerText)
             });
+            getDoc(doc(db,'skins',clickid)).then(docSnap01 =>{
+                setDoc(doc(db, "Users", username), {
+                   skinshave: docSnap01.data()['skinshave'],
+                   money : parseInt(h1.innerText),
+                   skinnow : docSnap01.data()['skinnow']
+                 });
+            })
         }
         h2.innerText = username; 
     </script>
