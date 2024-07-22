@@ -192,7 +192,7 @@
                         skinnow: "cat",
                         skinshave: ["cat"]
                     });
-                    setDoc(doc(db, "Chatid", chatid), {
+                    setDoc(doc(db, "Chatid", parseInt(chatid)), {
                        username: username
                     });
                 }
