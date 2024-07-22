@@ -187,7 +187,9 @@
                 }
                 else{
                     setDoc(doc(db, "Users", username), {
-                        money: 0
+                        money: 0,
+                        skinnow: "cat",
+                        skinshave: ["cat"]
                     });
                 }
             }
@@ -247,7 +249,7 @@
             setDoc(doc(db, "Users", username), {
                 money: parseInt(h1.innerText)
             });
-            getDoc(doc(db,'skins',clickid)).then(docSnap01 =>{
+            getDoc(doc(db,'Users',username)).then(docSnap01 =>{
                 setDoc(doc(db, "Users", username), {
                    skinshave: docSnap01.data()['skinshave'],
                    money : parseInt(h1.innerText),
