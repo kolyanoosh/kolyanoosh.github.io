@@ -16,6 +16,8 @@
   <div id="fishing-rod"></div>
   <div class="line" id="line"></div>
   <h1 id="score" class="centr">0</h1>
+  <h1 id="timer">-</h1>
+  <h3 id="listtext">Listing близко,ближе,чем вы думаете</h3>
   <h2 id="name" style="position:absolute;left:10;top:0;margin-bottom:0">1</h2>
   <button onclick="asmrbutton()">Turn on/off ASMR</button>
   
@@ -51,7 +53,7 @@
     .centr{
         position: absolute;
         top: 160px;
-        left: 250px;
+        left: 180px;
 
     }
     #imgmain{
@@ -78,6 +80,16 @@
         position: absolute;
         left: 165px;
         bottom: 502px;
+    }
+    #timer{
+        position: relative;
+        bottom: 1250px;
+        left: 85px;
+     }
+    #listtext{
+        position: relative;
+        bottom: 1265px;
+        left: 10px;
     }
     .line {
         position: relative;
@@ -296,6 +308,35 @@
             }
         }
         window.asmrbutton = asmrbutton;
+        // Устанавливаем дату, до которой нужно создать таймер (год, месяц (от 0 до 11), день, часы, минуты, секунды)
+    const targetDate = new Date('2024-09-01T23:59:59').getTime();
+
+    // Обновляем таймер каждую секунду
+    const timer = setInterval(function() {
+    // Получаем текущую дату и время
+    const now = new Date().getTime();
+
+    // Вычисляем разницу между текущим временем и целевой датой
+    const difference = targetDate - now;
+
+    // Рассчитываем оставшееся время в днях, часах, минутах и секундах
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    // Выводим оставшееся время в элемент с id="timer"
+    console.log(`${days}:${hours}:${minutes}:${seconds}`);
+    let timer = document.getElementById('timer');
+    timer.textContent = `${days}:${hours}:${minutes}:${seconds}`;
+
+
+    // Если время истекло, выводим сообщение и останавливаем таймер
+    if (difference < 0) {
+        clearInterval(timer);
+        console.log('Время истекло!');
+    }
+}, 1000);
     </script>
  </body>
 </html>
