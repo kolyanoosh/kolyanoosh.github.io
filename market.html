@@ -111,6 +111,7 @@
                         div.style.backgroundColor = "#ffffff";
 
                         function buyfunction(clickid){
+                            console.log(document.getElementById(clickid).children[0]);
                             getDoc(doc(db,'Users',username)).then(docSnap =>{
                                 console.log(docSnap.data()['skinshave'][0]);
                                 var arr = docSnap.data()['skinshave'];
@@ -118,6 +119,7 @@
                                 if (arr.indexOf(clickid) == -1){
                                     getDoc(doc(db,'skins',clickid)).then(docSnap01 =>{
                                         console.log(docSnap01.data())
+                                        document.getElementById(clickid).children[1].textContent = "";
                                         if(docSnap.data()['money'] > docSnap01.data()['price']){
                                             arr.push(clickid);
                                             setDoc(doc(db, "Users", username), {
@@ -129,11 +131,19 @@
                                     })
                                 }
                                 else{
+                                    let skinnowlast = docSnap.data()['skinnow'];
+                                    console.log(skinnowlast);
                                     setDoc(doc(db, "Users", username), {
                                         skinshave: docSnap.data()['skinshave'],
                                         money : docSnap.data()['money'],
                                         skinnow : clickid
                                     });
+                                    getDoc(doc(db,'Users',username)).then(usSnap =>{
+                                        if (skinnowlast != usSnap.data()['skinnow']){
+                                            document.getElementById(docSnap.data()['skinnow']).children[1].textContent = "";
+                                            document.getElementById(clickid).children[1].textContent = "✔️";
+                                        }
+                                    })
                                 }
                             })
                         }
@@ -147,23 +157,37 @@
                         img.style.width = "200%";
                         img.style.height = "200%";
                         img.style.objectFit = "cover";
-
+    
                         var caption = document.createElement("figcaption");
                         caption.setAttribute("id","capt");
                         caption.style.position = "absolute";
                         caption.style.fontFamily = "Bebas Neue";
-                        caption.style.top = "170px";
-                        caption.textContent = doc1.data().name;
+                        caption.style.top = "165px";
+                        caption.textContent = doc1.id;
 
                         var caption1 = document.createElement("figcaption");
                         caption1.setAttribute("id","capt1");
                         caption1.style.position = "absolute";
                         caption1.style.fontFamily = "Iceland";
-                        caption1.style.top = "185px";
-                        caption1.textContent = doc1.data().price;
+                        caption1.style.top = "180px";
+                        getDoc(doc(db,'Users',username)).then(docSnap =>{
+                            var arr = docSnap.data()['skinshave'];
+                            console.log(arr.indexOf(doc1.id));
+                            if (arr.indexOf(doc1.id) != -1){
+                                if (doc1.id != docSnap.data()['skinnow']){
+                                    caption1.textContent = "";
+                                }
+                                else{
+                                    caption1.textContent = "✔️";
+                                }
+                            }
+                            else{
+                                caption1.textContent = doc1.data().price;
+                            }
+                        })
 
                         div.appendChild(img);  
-                        div.appendChild(caption1)
+                        div.appendChild(caption1);
                         div.appendChild(caption);
                 });
             }
