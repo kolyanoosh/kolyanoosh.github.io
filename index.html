@@ -6,7 +6,7 @@
   <title>cssanim</title>
  </head>
  <body id="body1">
-  <button id="button1" class="btn123" onclick="window.location.href = 'index.html'">Main</button>
+  <button id="button1" class="btn123" onclick="window.location.href = 'index.html'">Home</button>
   <button id="button2" class="btn123" onclick="window.location.href = 'market.html'">Skins</button>
   <button id="button3" class="btn123" onclick="asmrbutton()">Turn on/off ASMR</button>
   <img id="imgmain" src="background.png"></div>
@@ -187,6 +187,15 @@
         let username = tg.initDataUnsafe.user.username;
         let chatidtg = tg.initDataUnsafe.user.id;
         window.Telegram.WebApp.disableVerticalSwipes()
+
+        window.addEventListener("touchstart", function(event){
+           if(event.target.tagName=="HTML" || event.target.tagName=="BODY"){
+              event.preventDefault();
+           }
+        } ,false);
+        window.addEventListener("scroll",function(){
+           window.scrollTo(0,0)
+        },false)
      
         getDoc(doc(db,'Users',username)).then(docSnap =>{
             if(docSnap.exists()){
