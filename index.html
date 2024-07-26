@@ -49,7 +49,7 @@
     .animforcoin1{
         animation: animforcoin 2s forwards;
     }
-    html {
+    html,body {
       width: 100%;
       overflow: hidden;
     }
@@ -187,15 +187,6 @@
         let username = tg.initDataUnsafe.user.username;
         let chatidtg = tg.initDataUnsafe.user.id;
         window.Telegram.WebApp.disableVerticalSwipes()
-
-        window.addEventListener("touchstart", function(event){
-           if(event.target.tagName=="HTML" || event.target.tagName=="BODY"){
-              event.preventDefault();
-           }
-        } ,false);
-        window.addEventListener("scroll",function(){
-           window.scrollTo(0,0)
-        },false)
      
         getDoc(doc(db,'Users',username)).then(docSnap =>{
             if(docSnap.exists()){
