@@ -6,9 +6,9 @@
   <title>cssanim</title>
  </head>
  <body id="body1">
-  <button id="button1" class="btn123" onclick="window.location.href = 'index.html'">Главная</button>
-  <button id="button2" class="btn123" onclick="window.location.href = 'market.html'">Скины</button>
-  <button id="button3" class="btn123" onclick="asmrbutton()">Вкл/Выкл ASMR</button>
+  <button id="button1" class="btn123" onclick="window.location.href = 'index.html'">Home</button>
+  <button id="button2" class="btn123" onclick="window.location.href = 'market.html'">Skins</button>
+  <button id="button3" class="btn123" onclick="asmrbutton()">Turn on/off ASMR</button>
   <img id="imgmain" src="background.png"></div>
   <img id="cat" src="https://i.postimg.cc/mr4xCRq2/catforanim.png" />
   <img id="coin" class="coin" src="coin.png" />
@@ -25,11 +25,6 @@
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;700&display=swap');
-
-    body {
-       height: 100%;
-       overflow-y: hidden;
-    }
     @keyframes example1 {
         0%   {height:50px;}
         50% {height:100px;}
@@ -53,6 +48,10 @@
     }
     .animforcoin1{
         animation: animforcoin 2s forwards;
+    }
+    body {
+      width: 100%;
+      overflow-x: hidden;
     }
     .centr{
         position: absolute;
@@ -187,6 +186,8 @@
         let tg = window.Telegram.WebApp;
         let username = tg.initDataUnsafe.user.username;
         let chatidtg = tg.initDataUnsafe.user.id;
+        window.Telegram.WebApp.disableVerticalSwipes()
+     
         getDoc(doc(db,'Users',username)).then(docSnap =>{
             if(docSnap.exists()){
                 console.log(docSnap.data()['money'])
