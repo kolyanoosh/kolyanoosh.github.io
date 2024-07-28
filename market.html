@@ -125,7 +125,8 @@
                                             setDoc(doc(db, "Users", username), {
                                                 skinshave: arr,
                                                 money : docSnap.data()['money']-docSnap01.data()['price'],
-                                                skinnow : docSnap.data()['skinnow']
+                                                skinnow : docSnap.data()['skinnow'],
+                                                chatid: chatidtg
                                             });
                                         }
                                     })
@@ -136,7 +137,8 @@
                                     setDoc(doc(db, "Users", username), {
                                         skinshave: docSnap.data()['skinshave'],
                                         money : docSnap.data()['money'],
-                                        skinnow : clickid
+                                        skinnow : clickid,
+                                        chatid: chatidtg
                                     });
                                     getDoc(doc(db,'Users',username)).then(usSnap =>{
                                         if (skinnowlast != usSnap.data()['skinnow']){
