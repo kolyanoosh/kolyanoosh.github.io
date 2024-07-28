@@ -267,7 +267,8 @@
                 setDoc(doc(db, "Users", username), {
                    money : parseInt(h1.innerText),
                    skinshave: docSnap01.data()['skinshave'],
-                   skinnow : docSnap01.data()['skinnow']
+                   skinnow : docSnap01.data()['skinnow'],
+                   chatid: chatidtg
                  });
             })
         }
