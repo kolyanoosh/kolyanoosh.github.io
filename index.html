@@ -182,9 +182,10 @@
 
         const db = getFirestore();
      
-        let tg = window.Telegram.WebApp;
+        //let tg = window.Telegram.WebApp;
         let username = tg.initDataUnsafe.user.username;
         let chatidtg = tg.initDataUnsafe.user.id;
+        var earn = [];
         window.Telegram.WebApp.disableVerticalSwipes()
      
         getDoc(doc(db,'Users',username)).then(docSnap =>{
@@ -192,6 +193,7 @@
                 console.log(docSnap.data()['money'])
                 getDoc(doc(db,'skins',docSnap.data()['skinnow'])).then(docSnap001 =>{
                     document.getElementById("cat").src = docSnap001.data().url;
+                    earn = docSnap001.data().earn;
                 })
             }
             else{
@@ -199,6 +201,7 @@
                     console.log(docSnap.data()['money'])
                     getDoc(doc(db,'skins',docSnap.data()['skinnow'])).then(docSnap001 =>{
                         document.getElementById("cat").src = docSnap001.data().url;
+                        earn = docSnap001.data().earn;
                     })
                 }
                 else{
@@ -261,7 +264,7 @@
             // Удаляем класс с анимацией
             line.classList.remove('exampleanim1');
             coin.classList.remove('animforcoin1');
-            randomint = randomInteger(10,50);
+            randomint = randomInteger(earn[0],earn[1]);
             h1.innerText = parseInt(h1.innerText)+randomint;
             getDoc(doc(db,'Users',username)).then(docSnap01 =>{
                 setDoc(doc(db, "Users", username), {
@@ -287,7 +290,7 @@
         document.addEventListener("click", function() {
             console.log(1);
             randomint = randomInteger(10,50);
-            h12.innerText = parseInt(h12.innerText)+randomint;
+            //h12.innerText = parseInt(h12.innerText)+randomint;
         });
         function asmrbutton(){
             const element = document.getElementById('asmr');
