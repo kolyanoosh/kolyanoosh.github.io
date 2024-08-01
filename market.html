@@ -88,6 +88,7 @@
 
             let tg = window.Telegram.WebApp;
             let username = tg.initDataUnsafe.user.username;
+            let chatidtg = tg.initDataUnsafe.user.id;
 
             const db = getFirestore();
             async function getAllDocumentsFromCollection() {
